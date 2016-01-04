@@ -67,7 +67,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
     end
   end
   
-  if item_type == '10photos' and string.match(url, "^https?://[^/]*oldfriends%.co%.nz") and not string.match(url, "^https?://images%.oldfriends%.co%.nz") then
+  if (item_type == '10photos' or item_type == '10institutions') and string.match(url, "^https?://[^/]*oldfriends%.co%.nz") and not string.match(url, "^https?://images%.oldfriends%.co%.nz") then
     html = read_file(file)
     for newurl in string.gmatch(html, '([^"]+)') do
       checknewurl(newurl)
@@ -141,4 +141,3 @@ wget.callbacks.httploop_result = function(url, err, http_stat)
 
   return wget.actions.NOTHING
 end
-

@@ -57,7 +57,7 @@ if not WGET_LUA:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20151229.01"
+VERSION = "20160104.01"
 USER_AGENT = 'ArchiveTeam'
 TRACKER_ID = 'oldfriends'
 TRACKER_HOST = 'tracker.archiveteam.org'
@@ -194,11 +194,15 @@ class WgetArgs(object):
         item['item_type'] = item_type
         item['item_value'] = item_value
         
-        assert item_type in ('10photos')
+        assert item_type in ('10photos', '10institutions')
+        
+        suffixes = string.digits
 
         if item_type == '10photos':
-            suffixes = string.digits
             for url in ['http://www.oldfriends.co.nz/InstitutionPhotoView.aspx?id={0}{1}'.format(item_value, a) for a in suffixes]:
+                wget_args.append(url)
+        elif item_type == '10institutions':
+            for url in ['http://www.oldfriends.co.nz/Institution.aspx?id={0}{1}'.format(item_value, a) for a in suffixes]:
                 wget_args.append(url)
         else:
             raise Exception('Unknown item')
@@ -275,4 +279,3 @@ pipeline = Pipeline(
         stats=ItemValue("stats")
     )
 )
-
