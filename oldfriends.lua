@@ -28,7 +28,7 @@ wget.callbacks.download_child_p = function(urlpos, parent, depth, start_url_pars
   local url = urlpos["url"]["url"]
   local html = urlpos["link_expect_html"]
   
-  if (downloaded[url] ~= true and addedtolist[url] ~= true) and ((string.match(url, "[^0-9]"..item_value.."[0-9]") and not string.match(url, "[^0-9]"..item_value.."[0-9][0-9]")) or string.match(url, "^https?://images%.oldfriends%.co%.nz") or html == 0) and not (string.match(url, "[iI]nstitution[pP]hoto[lL]ink%.aspx%?photo_id="..item_value) or string.match(url, "[iI]nstitution[pP]hoto[aA]dd[nN]ame%.aspx%?photo_id="..item_value)) then
+  if (downloaded[url] ~= true and addedtolist[url] ~= true) and ((string.match(url, "[^0-9]"..item_value.."[0-9]") and not string.match(url, "[^0-9]"..item_value.."[0-9][0-9]")) or string.match(url, "^https?://images%.oldfriends%.co%.nz") or html == 0) and not (string.match(url, "%%2[cC]%%2[cC]") or string.match(url, ",,") or string.match(url, "[iI]nstitution[pP]hoto[lL]ink%.aspx%?photo_id="..item_value) or string.match(url, "[iI]nstitution[pP]hoto[aA]dd[nN]ame%.aspx%?photo_id="..item_value)) then
     addedtolist[url] = true
     return true
   else
@@ -45,7 +45,7 @@ wget.callbacks.get_urls = function(file, url, is_css, iri)
   
   local function check(urla)
     local url = string.match(urla, "^([^#]+)")
-    if (downloaded[url] ~= true and addedtolist[url] ~= true) and ((string.match(url, "[^0-9]"..item_value.."[0-9]") and not string.match(url, "[^0-9]"..item_value.."[0-9][0-9]")) or string.match(url, "^https?://images%.oldfriends%.co%.nz")) and not (string.match(url, "[iI]nstitution[pP]hoto[lL]ink%.aspx%?photo_id="..item_value) or string.match(url, "[iI]nstitution[pP]hoto[aA]dd[nN]ame%.aspx%?photo_id="..item_value)) then
+    if (downloaded[url] ~= true and addedtolist[url] ~= true) and ((string.match(url, "[^0-9]"..item_value.."[0-9]") and not string.match(url, "[^0-9]"..item_value.."[0-9][0-9]")) or string.match(url, "^https?://images%.oldfriends%.co%.nz")) and not (string.match(url, "%%2[cC]%%2[cC]") or string.match(url, ",,") or string.match(url, "[iI]nstitution[pP]hoto[lL]ink%.aspx%?photo_id="..item_value) or string.match(url, "[iI]nstitution[pP]hoto[aA]dd[nN]ame%.aspx%?photo_id="..item_value)) then
       if string.match(url, "&amp;") then
         table.insert(urls, { url=string.gsub(url, "&amp;", "&") })
         addedtolist[url] = true
