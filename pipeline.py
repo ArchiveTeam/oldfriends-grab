@@ -57,7 +57,7 @@ if not WGET_LUA:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20160107.02"
+VERSION = "20160118.01"
 USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0'
 TRACKER_ID = 'oldfriends'
 TRACKER_HOST = 'tracker.archiveteam.org'
