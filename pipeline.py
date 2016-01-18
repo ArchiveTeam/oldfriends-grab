@@ -57,7 +57,7 @@ if not WGET_LUA:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20160118.02"
+VERSION = "20160118.03"
 USER_AGENT = 'msnbot/1.1 (+http://search.msn.com/msnbot.htm)'
 TRACKER_ID = 'oldfriends'
 TRACKER_HOST = 'tracker.archiveteam.org'
@@ -203,6 +203,8 @@ class WgetArgs(object):
                 wget_args.append(url)
         elif item_type == '10institutions':
             for url in ['http://www.oldfriends.co.nz/Institution.aspx?id={0}{1}'.format(item_value, a) for a in suffixes]:
+                wget_args.append(url)
+            for url in ['http://www.oldfriends.co.nz/InstitutionDetails.aspx?id={0}{1}'.format(item_value, a) for a in suffixes]:
                 wget_args.append(url)
         else:
             raise Exception('Unknown item')
