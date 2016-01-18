@@ -57,7 +57,7 @@ if not WGET_LUA:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = "20160118.01"
+VERSION = "20160118.02"
 USER_AGENT = 'msnbot/1.1 (+http://search.msn.com/msnbot.htm)'
 TRACKER_ID = 'oldfriends'
 TRACKER_HOST = 'tracker.archiveteam.org'
